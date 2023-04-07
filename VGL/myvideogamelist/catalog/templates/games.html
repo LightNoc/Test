@@ -1,0 +1,36 @@
+{% extends 'base_generic.html' %}
+{% block head_scripts %}
+    {% load static %}
+    <script src="{% static 'assets/scripts.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <h1>All Games</h1>
+    <table id="games-table">
+        <tr>
+            <th onclick="sortTable(0)">Title</th>
+            <th onclick="sortTable(1)">Release Date</th>
+            <th onclick="sortTable(2)">Summary</th>
+            <th onclick="sortTable(3)">Publisher</th>
+            <th onclick="sortTable(4)">Developer</th>
+            <th onclick="sortTable(5)">Platform</th>
+            <th onclick="sortTable(6)">Genre</th>
+        </tr>
+        {% for game in games %}
+            <script>
+                function log_console() {
+                    console.log
+                        (game.platform);
+                }
+            </script>
+            <tr>
+                <td>{{ game.title }}</td>
+                <td>{{ game.release_date }}</td>
+                <td>{{ game.summary }}</td>
+                <td>{{ game.publisher }}</td>
+                <td>{{ game.developer }}</td>
+                <td>{{ game.platform }}</td>
+                <td>{{ game.genre }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
